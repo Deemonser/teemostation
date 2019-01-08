@@ -11,7 +11,14 @@ $(function () {
 
 //在页面显示下载按钮
 function showButton() {
-    $('body').append('<div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 90px;">我说悬浮按钮</div>');
+    $('body').append('<div id="dg" style="z-index: 9999; position: fixed ! important; right: 30px; top: 90px;">我是悬浮按钮</div>');
 
 }
+
+
+
+
+
+
+
 
