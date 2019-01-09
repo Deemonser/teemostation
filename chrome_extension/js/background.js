@@ -25,7 +25,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log(request, sender, sendResponse);
 
     if (request.code === 100900001) {//content发送的 Url
-        sendResponse({isShow: true,content:[]})
+
+        sendResponse({isShow: true, content: ''})
     } else if (request.code === 100900002) {
 
     }
