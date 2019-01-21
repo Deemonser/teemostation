@@ -1,0 +1,22 @@
+.teemo_show {
+    z-index: 9999;
+    position: fixed ! important;
+    right: 30px;
+    top: 90px;
+    width: 50px;
+    height: 50px;
+    border-radius: 0px;
+    background: yellowgreen;
+    transition: width 0.8s, height 0.8s;
+    -moz-transition: width 0.8s, height 0.8s, -moz-transform 0.8s;
+    -webkit-transition: width 0.8s, height 0.8s, -webkit-transform 0.8s;
+    -o-transition: width 0.8s, height 0.8s, -o-transform 0.8s;
+}
+
+.teemo_show:hover {
+    width: 200px;
+    height: 300px;
+    border-radius: 5px;
+    padding: 10px;
+
+}

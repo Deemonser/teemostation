@@ -14,6 +14,9 @@ $(function () {
         document.body.style.backgroundColor = items.color;
     });
 
+
+
+
 });
 
 $('#getCurrentUrl').click(function () {
