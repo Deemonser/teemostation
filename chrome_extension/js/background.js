@@ -1,5 +1,3 @@
-console.log('This is background of TeemoStation')
-
 /**
  *功能
  *
@@ -14,6 +12,48 @@ function test() {
     alert('我是background！');
 }
 
+
+window.onbeforeunload = function () {
+    console.log("background.js  onbeforeunload.....")
+};
+
+window.onload = function () {
+    console.log("background.js  onload.....")
+//创建一个通知面板
+
+    // chrome.notifications.create(
+    //     Math.random() + '',  // id
+    //
+    //     {
+    //
+    //         type: 'list',
+    //
+    //         iconUrl: 'img/ic_teemo.png',
+    //
+    //         appIconMaskUrl: 'img/ic_teemo.png',
+    //
+    //         title: '通知主标题',
+    //
+    //         message: '通知副标题',
+    //
+    //         contextMessage: '好开心呀，终于会使用谷歌扩展里面的API了！',
+    //
+    //         buttons: [{title: '按钮1的标题', iconUrl: 'img/ic_teemo.png'}, {title: '按钮2的标题', iconUrl: 'img/ic_teemo.png'}],
+    //
+    //         items: [{title: '消息1', message: '今天天气真好！'}, {title: '消息2', message: '明天天气估计也不错！'}],
+    //
+    //         eventTime: Date.now() + 2000
+    //
+    //     },
+    //
+    //     (id) => {
+    //
+    //         console.log(id);
+    //
+    //     }
+    // );
+
+};
 
 /**
  * 监听来自content-script的消息
@@ -135,30 +175,13 @@ function injectJs(html) {
 
 // web请求监听，最后一个参数表示阻塞式，需单独声明权限：webRequestBlocking
 chrome.webRequest.onBeforeSendHeaders.addListener(details => {
-
     console.log(details)
-
     var headStr = '';
     for (var i = 0; i < details.requestHeaders.length; ++i) {
         let header = details.requestHeaders[i];
         headStr = headStr + header.name + ':"' + header.value + '",';
     }
     console.log(headStr);
-    // details.requestHeaders[details.requestHeaders.length] = {
-    //     name: 'Cookie',
-    //     value: 'tvfe_boss_uuid=718e0a25b56635c5; pgv_pvid=228757964; ad_play_index=45; pgv_info=ssid=s8465444159; ts_last=v.qq.com/; ts_uid=2362075656; bucket_id=9231006; ptag=|v_qq_com; login_remember=wx; main_login=wx; vuserid=471752101; vusession=9b8cc6756b8d0cda504777bcd0f4; access_token=17_SPkcZw9oGwUU9ZsjKu4nsGdGBlVnZ5ohGc1-NOMHPfl-lBZfQAXsXwwa0Mk7cWr5s6FV6Vk3Q2ck5ed8YWKcmA; openid=ox8XOvr5CtqiFmnlwrZiGROHJzHU; appid=wx5ed58254bc0d6b7f; wx_nick=Deemons%20; wx_head=http://thirdwx.qlogo.cn/mmopen/vi_32/XwtLNH83BWYBIR66OHzfUPTAeVSAoHiauYcZpSl6P6N3BAnEGBd99qIEabGkUYlzVY9ppDjKF2r2LKDSOMQycOg/132; uid=713636338'
-    // }
-
-
-//     accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
-// accept-encoding: gzip, deflate, br
-// accept-language: zh-CN,zh;q=0.9,en;q=0.8
-// cache-control: max-age=0
-// cookie: tvfe_boss_uuid=13647d5810b94268; pgv_pvid=1912895578; pgv_info=ssid=s5378475460; ts_refer=www.baidu.com/link; ts_uid=1179110412; bucket_id=9231000; qv_als=IDtFyZkfsSzj2Om2A11547986951WQGjmw==; ptag=www_baidu_com|v_qq_com; login_remember=wx; main_login=wx; vuserid=471752101; vusession=894dd444fbae0e80bdea90e46d74; access_token=17_NOGTO_gH_12khph4U7bbcYttuqZDvBqO3jG2GWUQkdU86U_lpDUYLaYZfIVrHMfhE0mmr1ss0fHj9WknwHa4_w; openid=ox8XOvr5CtqiFmnlwrZiGROHJzHU; appid=wx5ed58254bc0d6b7f; wx_nick=Deemons%20; wx_head=http://thirdwx.qlogo.cn/mmopen/vi_32/XwtLNH83BWYBIR66OHzfUPTAeVSAoHiauYcZpSl6P6N3BAnEGBd99qIEabGkUYlzVY9ppDjKF2r2LKDSOMQycOg/132; uid=713636338; ts_last=v.qq.com/channel/choice; ad_play_index=85
-// referer: https://www.baidu.com/link?url=RV0qLW8pliwhkMAAnxOtHDnvipIU-DEQD2mq5MXE4l_&wd=&eqid=ac672907000448e9000000065c4465e9
-// upgrade-insecure-requests: 1
-// user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
-
 
     details.requestHeaders[details.requestHeaders.length] = {
         name: 'Cookie',
@@ -169,6 +192,5 @@ chrome.webRequest.onBeforeSendHeaders.addListener(details => {
     console.log(details)
     return {requestHeaders: details.requestHeaders};
 
-}, {urls: ["<all_urls>"]}, [ "requestHeaders"]);
-
+}, {urls: ["<all_urls>"]}, ["requestHeaders"]);
 

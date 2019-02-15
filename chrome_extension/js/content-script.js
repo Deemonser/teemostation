@@ -28,16 +28,10 @@ function sendMessageToBackground(message, response) {
 }
 
 
-// 简单的消息通知
-function tip(info) {
-    console.log(info);
-}
-
 
 //注入 html
 function loadHtmlString(html) {
     $('body').append(html);
-
 }
 
 
@@ -134,18 +128,6 @@ function teemo_downloadFile(url) {
 }
 
 
-function loadJQuery() {
-    try {
-        $("head");
-    }
-    catch (e) {
-        dynamicLoadJs('js/jquery-2.1.3.min.js', function () {
-
-            $("head");
-        })
-
-    }
-}
 
 
 // 注意，必须设置了run_at=document_start 此段代码才会生效

@@ -4,7 +4,8 @@
  *
  * Code 规则：formCode + toCode + actionCode
  */
-
+var currentTabID;
+var currentTabURL;
 
 $(function () {
 
@@ -14,8 +15,23 @@ $(function () {
         document.body.style.backgroundColor = items.color;
     });
 
-
-
+    //获取当前 tabId
+    var arguments = getUrlVars();
+    if (arguments.url === undefined) {
+        chrome.tabs.query(
+            {
+                active: true,
+                lastFocusedWindow: true
+            },
+            function (tabs) {
+                currentTabURL = tabs[0].url;
+                currentTabID = tabs[0].id;
+            }
+        );
+    } else {
+        currentTabURL = decodeURI(arguments.url);
+        currentTabID = parseInt(decodeURI(arguments.id));
+    }
 
 });
 
@@ -26,13 +42,20 @@ $('#getCurrentUrl').click(function () {
             console.log(response);　　// 向content-script.js发送请求信息
         });
     });
-
-})
+});
 
 $('#test').click(function () {
     var bg = chrome.extension.getBackgroundPage();
     bg.test();
-})
+
+});
+
+$('#getCookie').click(function () {
+    // getCookiesJson(currentTabID, currentTabURL, function (json) {
+    //     alert(json)
+    // })
+    window.open('http://www.imooc.com','_blank','width=300,height=200,menubar=no,toolbar=no, status=no,scrollbars=yes')
+});
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log('收到来自content-script的消息：');
@@ -45,6 +68,7 @@ function getCurrentTabUrl(listen) {
         listen(tab.url)
     });
 }
+
 
 //
 // // 打开后台页
