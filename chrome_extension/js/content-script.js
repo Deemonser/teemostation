@@ -28,7 +28,6 @@ function sendMessageToBackground(message, response) {
 }
 
 
-
 //注入 html
 function loadHtmlString(html) {
     $('body').append(html);
@@ -126,8 +125,6 @@ function teemo_downloadFile(url) {
 
     download(url)
 }
-
-
 
 
 // 注意，必须设置了run_at=document_start 此段代码才会生效

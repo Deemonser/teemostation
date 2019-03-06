@@ -79,7 +79,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         </div>
     </div>
 <script type="text/javascript">
-                         
+                 
 function teemo_getDownloadUrl(){
     $.get("https://api.apiopen.top/todayVideo",
         function (data, status) {

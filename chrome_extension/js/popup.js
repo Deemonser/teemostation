@@ -39,12 +39,12 @@ $(function () {
         var content = this.hash.replace('/', '');
         tabs.removeClass("active");
         $(this).addClass("active");
-        $("#tabs_content").find('p').hide();
+        $(".tabs_content").hide();
         $(content).fadeIn(200);
     });
 
-    // $("#tabs_content").find('p').hide();
-    // $("#one").show()
+    $(".tabs_content").hide();
+    $("#one").show()
 });
 
 
