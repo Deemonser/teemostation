@@ -1,0 +1,17 @@
+html, body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, a, table, input, img, select, textarea {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+html, body {
+    line-height: 1
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    visiblility: hidden;
+    height: 0;
+    clear: both
+}

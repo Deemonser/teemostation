@@ -45,6 +45,16 @@ $(function () {
 
     $(".tabs_content").hide();
     $("#one").show()
+
+
+
+    var app = new Vue({
+        el: '#one',
+        data: {
+            seen: false
+        }
+    })
+
 });
 
 
